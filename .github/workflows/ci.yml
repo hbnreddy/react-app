@@ -1,0 +1,21 @@
+name: build node application
+on: 
+ push:
+  branches: [develop]
+jobs:
+  node-application:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use NodeJs
+        uses: actions/setup-node@v1
+        with: 
+          node-version: "12.x"
+      - run: npm ci
+      - run: npx prettier --write "**/*.js"
+      - run: npx prettier --check "**/*.js"  
+      - run: npm run format:check
+      - run: npm test -- --coverage
+        env:
+          CI: true
+

@@ -1,6 +1,7 @@
 name: build node application
-on: [push]
- branches: [develop]
+on: 
+ push:
+  branches: [develop]
 jobs:
   node-application:
     runs-on: ubuntu-latest

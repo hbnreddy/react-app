@@ -1,6 +1,7 @@
 name: build node application
 on: 
- push:
+  #push:
+ pull_request: 
   branches: [develop]
 jobs:
   node-application:
